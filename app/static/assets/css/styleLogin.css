@@ -1,0 +1,243 @@
+@font-face {
+    font-family: "HeadingFont";
+    src: url('../fonts/kg_so_it_goes/KGSoItGoes.otf') format('opentype');
+    font-style: normal;
+}
+
+body {
+    background-image: url('../images/background.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: rgba(255, 236, 185, 0); 
+}
+
+
+li {
+    font-family: HeadingFont, serif;
+    font-size: 32px;
+    color: #008080;
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.branding {
+    font-family: HeadingFont, serif;
+    font-size: 76px;
+    color: #008080;
+}
+
+.navbar {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.nav-link {
+    transition: 0.7s ease;
+    color: teal;
+}
+
+.nav-link:hover {
+    color: #006161;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    margin: 5px auto;
+    height: 4px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: teal;
+}
+
+@media(max-width:768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hamburger.active {
+        z-index: 102;
+    }
+
+    .branding {
+        z-index: 102;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        gap: 0;
+        flex-direction: column;
+        background-color: rgba(234,229,217,0.8); 
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        transition: left 0.3s;
+        justify-content: center;
+        z-index: 101;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 20px; 
+}
+
+.wrapper {
+    background:transparent;
+    border-radius: 10px;
+    color: #85573e;
+    padding: 35px 275px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(0, 128, 128, 0.74);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 500px; 
+    backdrop-filter: blur(20px);
+}
+
+.wrapper h1{
+    font-size: 48px;
+    text-align: center;
+    font-family: HeadingFont;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    color: #85573e;
+    padding: 15px 40px 15px 15px;
+    font-family: HeadingFont;
+    font-size: 24px;
+}
+
+.input-box input::placeholder {
+    color: #85573e;
+}
+
+.input-box i {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    font-size: 20px;
+}
+
+.wrapper .remember-forgort {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7.5px;
+    font-size: 24px;
+    font-family: HeadingFont;
+}
+
+.remember-forgort label input {
+    accent-color: royalblue;
+    margin-right: 5px;
+    margin-left: 2px;
+}
+
+.remember-forgort a {
+    color: #85573e;
+    text-decoration: none;
+}
+
+.remember-forgort a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .btn {
+    width: 500px;
+    height: 45px;
+    background: teal;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    color: burlywood;
+    font-family: HeadingFont;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.wrapper .register-link {
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0 15px;
+    font-family: HeadingFont;
+}
+
+.register-link p a {
+    color: #85573e;
+    text-decoration: none;
+    font-weight: 550;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}

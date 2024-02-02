@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styleLogin.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="branding">Journal</a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                    </li>
+                    {% if 'user_id' in session %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('profile', username=session['username']) }}" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('signup') }}" class="nav-link">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <div class="main-content">
+        <div class="wrapper">
+            <!-- Use Flask-WTF to render the form -->
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <h1>Sign-Up</h1>
+                <div class="input-box">
+                    {{ form.username.label }}
+                    {{ form.username(class_='input-control', placeholder='Username') }}
+                    {% if form.username.errors %}
+                        <div class="form-errors">{{ form.username.errors[0] }}</div>
+                    {% endif %}
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-box">
+                    {{ form.email.label }}
+                    {{ form.email(class_='input-control', placeholder='Email Address') }}
+                    {% if form.email.errors %}
+                        <div class="form-errors">{{ form.email.errors[0] }}</div>
+                    {% endif %}
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <div class="input-box">
+                    {{ form.password.label }}
+                    {{ form.password(class_='input-control', placeholder='Password') }}
+                    {% if form.password.errors %}
+                        <div class="form-errors">{{ form.password.errors[0] }}</div>
+                    {% endif %}
+                    <i class='bx bx-lock'></i>
+                </div>
+                <button class="btn" type="submit">Sign-Up</button>
+                <div class="register-link">
+                    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+</html>

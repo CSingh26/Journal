@@ -1,0 +1,151 @@
+@font-face {
+    font-family: "HeadingFont";
+    src: url('../fonts/kg_so_it_goes/KGSoItGoes.otf') format('opentype');
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../images/background.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+
+header {
+    background-color: rgba(255, 236, 185, 0); 
+}
+
+li {
+    font-family: HeadingFont, serif;
+    font-size: 32px;
+    color: #008080;
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.branding {
+    font-family: HeadingFont, serif;
+    font-size: 76px;
+    color: #008080;
+}
+
+.navbar {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.nav-link {
+    transition: 0.7s ease;
+    color: teal;
+}
+
+.nav-link:hover {
+    color: #006161;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    margin: 5px auto;
+    height: 4px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: teal;
+}
+
+@media(max-width:768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hamburger.active {
+        z-index: 102;
+    }
+
+    .branding {
+        z-index: 102;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        gap: 0;
+        flex-direction: column;
+        background-color: rgba(234,229,217,0.8); 
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        transition: left 0.3s;
+        justify-content: center;
+        z-index: 101;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+.blur {
+    filter: blur(3px);
+    pointer-events: none; 
+    user-select: none; 
+}
+
+.user-details {
+    font-family: HeadingFont, serif;
+    font-size: 34px;
+    margin-top: 30px;
+    margin-left: 15px;
+    color: teal;
+}
+
+.journal-entries {
+    font-family: HeadingFont, serif;
+    font-size: 34px;
+    margin-top: 30px;
+    margin-left: 15px;
+    color: teal;
+}

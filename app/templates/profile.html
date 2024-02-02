@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Profile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a href="{{ url_for('home') }}" class="branding">Journal</a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                    </li>
+                    {% if 'user_id' in session %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('profile', username=session['username']) }}" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('signup') }}" class="nav-link">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </header>
+        <div class="main-content">
+            <div class="user-details">
+                <h1>{{ user.username }}</h1>
+                <p>{{ user.profile.bio }}</p>
+            </div>
+            <div class="journal-entries">
+                <h2>Journal Posts from the Last 30 Days</h2>
+                {% for post in posts %}
+                    <div class="journal-post">
+                        <p>{{ post.content }}</p>
+                        <small>Posted on {{ post.created_at.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+    </body>
+</html>
